@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/python/Dockerfile
+    container_name: backend
+    volumes:
+      - ./backend:/backend
+    command: python3 manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    tty: true
+  front:
+    build:
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    container_name: front
+    volumes:
+      - ./front:/usr/src/front
+    command: sh -c "cd photo-app && yarn start"
+    ports:
+      - "3000:3000"
+    tty: true
