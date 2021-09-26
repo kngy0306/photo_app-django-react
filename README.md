@@ -25,7 +25,8 @@ docker-compose up -d
 │   └── python
 │       └── Dockerfile
 ├── docker-compose.yml
-├── front
+├── requirements.txt
+└── front
 ```
 
 **dockerイメージのビルド**
