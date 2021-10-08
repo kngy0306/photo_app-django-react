@@ -22,3 +22,22 @@ class PhotoList(APIView):
             return Response(res_list)
         except:
             return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class PhotoDetail(APIView):
+    def get(self, request, pk):
+        try:
+            try:
+                photo = PhotoPost.objects.get(id=pk)
+            except:
+                return Response("Not Found", status=status.HTTP_404_NOT_FOUND)
+            res = {
+                'id': photo.id,
+                'title': photo.title,
+                'comment': photo.comment,
+                'image': photo.image.url,
+                'category': photo.category.title,
+                'posted_at': photo.posted_at,
+            }
+            return Response(res)
+        except:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
