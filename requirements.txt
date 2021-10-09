@@ -1,4 +1,8 @@
 Django<4
-djangorestframework
+
 django-markdownx
+
 django-cors-headers
+
+djangorestframework
+djangorestframework-jwt
