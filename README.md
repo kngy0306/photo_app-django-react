@@ -61,6 +61,11 @@ docker-compose exec front sh
 yarn add react-router-dom 
 ```
 
+**styled-componentsのインストール**
+```bash
+yarn add styled-components
+```
+
 ### 参考記事
 ディレクトリ構成、docker-compose.ymlの書き方  
 https://qiita.com/sam8helloworld/items/e7fffa9afc82aea68a7a  

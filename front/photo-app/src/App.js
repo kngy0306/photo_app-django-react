@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import { PhotoList } from "./pages/PhotoList";
-import { About } from "./pages/About";
-import { Users } from "./pages/Users";
+import { PhotoDetail } from "./pages/PhotoDetail";
+import { PhotoCategory } from "./pages/PhotoCategory";
 
 const App = () => {
   return (
@@ -10,25 +10,19 @@ const App = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/">投稿一覧</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
+              <Link to="/photo">投稿一覧</Link>
             </li>
           </ul>
         </nav>
 
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/photo/:category">
+            <PhotoCategory />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/photo/:id">
+            <PhotoDetail />
           </Route>
-          <Route path="/">
+          <Route path="/photo">
             <PhotoList />
           </Route>
         </Switch>
