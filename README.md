@@ -53,6 +53,25 @@ docker-compose run backend django-admin startproject photo_app .
 docker-compose up -d
 ```
 
+**React Routerのインストール**
+```bash
+# frontコンテナへログイン
+docker-compose exec front sh
+
+yarn add react-router-dom 
+```
+
+**styled-componentsのインストール**
+```bash
+yarn add styled-components
+```
+
+**axiosのインストール**
+```bash
+yarn add axios
+```
+
+
 ### 参考記事
 ディレクトリ構成、docker-compose.ymlの書き方  
 https://qiita.com/sam8helloworld/items/e7fffa9afc82aea68a7a  

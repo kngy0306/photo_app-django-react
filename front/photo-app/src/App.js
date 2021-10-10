@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { PhotoList } from "./pages/PhotoList";
+import { PhotoDetail } from "./pages/PhotoDetail";
+import { PhotoCreate } from "./pages/PhotoCreate";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">投稿一覧</Link>
+            </li>
+            <li>
+              <Link to="/create">写真を投稿する</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route exact path="/">
+            <PhotoList />
+          </Route>
+          <Route exact path="/photo/:id">
+            <PhotoDetail />
+          </Route>
+          <Route exact path="/create">
+            <PhotoCreate />
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
