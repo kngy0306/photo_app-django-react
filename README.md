@@ -1,5 +1,12 @@
 # photo_app-django-react
 
+#### TOP画面
+<img src="https://user-images.githubusercontent.com/57553474/136688416-732a4c86-2442-4d74-b92e-76f7d20d9610.jpg" width=50%>
+
+#### 写真詳細画面
+<img src="https://user-images.githubusercontent.com/57553474/136688418-268b0bcf-3c36-4399-8925-4eed90cce02d.jpg" width=40%>
+
+
 ### Usage
 
 ```bash
