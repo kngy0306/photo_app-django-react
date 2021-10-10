@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getPhotoList } from "../api/index";
+import { Grid, ImageList, ImageListItem, Box } from "@mui/material";
 
 export const PhotoList = () => {
   const dataElement = {
@@ -25,27 +26,39 @@ export const PhotoList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>PhotoList</h1>
+    <Box mt={5}>
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div>
-          {photoList.map((photo, index) => {
-            return (
-              <div key={index}>
-                <Link to={`/photo/${photo.id}`}>{photo.title}</Link>
-                <br />
-                <img
-                  src={photo.image}
-                  alt={photo.title}
-                  style={{ width: "100px" }}
-                />
-              </div>
-            );
-          })}
-        </div>
+        <Box>
+          <Grid
+            container
+            spacing={2}
+            justifyContent="space-around"
+            alignItems="center"
+          >
+            <ImageList variant="masonry" cols={5} gap={8}>
+              {photoList.map((photo, index) => {
+                return (
+                  <Grid item xs={5} md={2}>
+                    <ImageListItem key={index}>
+                      <div key={index}>
+                        <Link to={`/photo/${photo.id}`}>
+                          <img
+                            src={`${photo.image}?w=508&fit=crop&auto=format`}
+                            alt={photo.title}
+                            style={{ width: "100px" }}
+                          />
+                        </Link>
+                      </div>
+                    </ImageListItem>
+                  </Grid>
+                );
+              })}
+            </ImageList>
+          </Grid>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };

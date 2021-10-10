@@ -1,5 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import { Grid, Button } from "@mui/material";
 
 export const PhotoCreate = () => {
   const [title, setTitle] = useState("");
@@ -17,7 +20,7 @@ export const PhotoCreate = () => {
   const photoPost = (e) => {
     const data = new FormData();
     const headers = {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
     data.append("title", { title });
     data.append("comment", { comment });
@@ -27,7 +30,7 @@ export const PhotoCreate = () => {
       .post(imgUri, data, { headers: headers })
       .then((res) => {
         console.log("success upload");
-      })  
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -35,49 +38,52 @@ export const PhotoCreate = () => {
 
   return (
     <div>
-      <h1>写真を投稿</h1>
       <form onSubmit={(e) => photoPost(e)}>
-        <p>
-          <label>
-            Title:
-            <input
-              type="text"
+        <Grid
+          container
+          spacing={2}
+          style={{ margin: "auto" }}
+          justifyContent="space-around"
+          alignItems="center"
+        >
+          <Grid item xs={12}>
+            <h2>写真を投稿</h2>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              id="outlined-name"
+              label="Title:"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-          </label>
-        </p>
-        <p>
-          <label>
-            Comment:
-            <input
-              type="text"
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              id="outlined-name"
+              label="Comment:"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
-          </label>
-        </p>
-        <p>
-          <label>
-            画像:
+          </Grid>
+          <Grid item xs={12}>
             <input
               type="file"
               accept="image/*"
               onChange={(e) => processImage(e)}
             />
-          </label>
-        </p>
-        {imagePath ? (
-          <p>
-            <img src={imagePath} style={{ width: "100px" }} alt="preview" />
-          </p>
-        ) : null}
-        <input type="submit" value="Submit" />
+          </Grid>
+          <Grid item xs={12}>
+            <Button color="primary" variant="contained">
+              送信
+            </Button>
+          </Grid>
+          {imagePath ? (
+            <p>
+              <img src={imagePath} style={{ width: "100px" }} alt="preview" />
+            </p>
+          ) : null}
+        </Grid>
       </form>
-
-      <p>{title}</p>
-      <p>{comment}</p>
-      <p>{imagePath}</p>
     </div>
   );
 };
