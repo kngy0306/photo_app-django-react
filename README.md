@@ -73,7 +73,7 @@ yarn add axios
 
 **Material UIのインストール**
 ```bash
-yarn add @mui/material @emotion/react @emotion/styled
+yarn add @mui/material @emotion/react @emotion/styled @mui/icons-material
 
 # 3rd party
 yarn add material-ui-popup-state

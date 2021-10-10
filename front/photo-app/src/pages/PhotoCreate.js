@@ -2,8 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import * as React from "react";
 import TextField from "@mui/material/TextField";
-import { Grid, ImageList, ImageListItem, Box } from "@mui/material";
-import Button from "@mui/material/Button";
+import { Grid, Button } from "@mui/material";
 
 export const PhotoCreate = () => {
   const [title, setTitle] = useState("");
@@ -42,7 +41,7 @@ export const PhotoCreate = () => {
       <form onSubmit={(e) => photoPost(e)}>
         <Grid
           container
-          spacing={3}
+          spacing={2}
           style={{ margin: "auto" }}
           justifyContent="space-around"
           alignItems="center"
