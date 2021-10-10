@@ -66,6 +66,12 @@ yarn add react-router-dom
 yarn add styled-components
 ```
 
+**axiosのインストール**
+```bash
+yarn add axios
+```
+
+
 ### 参考記事
 ディレクトリ構成、docker-compose.ymlの書き方  
 https://qiita.com/sam8helloworld/items/e7fffa9afc82aea68a7a  

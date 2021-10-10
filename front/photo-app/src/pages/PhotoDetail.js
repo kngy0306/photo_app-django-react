@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { getPhotoDetail } from "../api/getPhoto";
+import { getPhotoDetail, deletePhoto } from "../api/index";
 import { Link } from "react-router-dom";
 
 export const PhotoDetail = () => {
@@ -16,6 +16,10 @@ export const PhotoDetail = () => {
   const [photoDetail, setPhotoDetail] = useState(dataElement);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+
+  const deletePost = (id) => {
+    deletePhoto(id);
+  };
 
   useEffect(() => {
     getPhotoDetail(id)
@@ -37,9 +41,18 @@ export const PhotoDetail = () => {
         <div>
           <h3>{photoDetail.title}</h3>
           <div>{photoDetail.comment}</div>
-          <img src={`http://localhost:8000${photoDetail.image}`} alt={`${photoDetail.image.split("/images/")[1]}`} style={{width:"100px"}}/>
-          <div><Link to={`/photo/${photoDetail.category}`}>{photoDetail.category}</Link></div>
+          <img
+            src={photoDetail.image}
+            alt={photoDetail.title}
+            style={{ width: "100px" }}
+          />
+          <div>
+            <Link to={`/photo/${photoDetail.category}`}>
+              {photoDetail.category}
+            </Link>
+          </div>
           <div>{photoDetail.posted_at}</div>
+          <button onClick={() => deletePost(photoDetail.id)}>削除</button>
         </div>
       )}
     </div>

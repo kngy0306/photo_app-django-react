@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import { PhotoList } from "./pages/PhotoList";
 import { PhotoDetail } from "./pages/PhotoDetail";
-import { PhotoCategory } from "./pages/PhotoCategory";
+import { PhotoCreate } from "./pages/PhotoCreate";
 
 const App = () => {
   return (
@@ -10,20 +10,23 @@ const App = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/photo">投稿一覧</Link>
+              <Link to="/">投稿一覧</Link>
+            </li>
+            <li>
+              <Link to="/create">写真を投稿する</Link>
             </li>
           </ul>
         </nav>
 
         <Switch>
-          <Route path="/photo/:category">
-            <PhotoCategory />
+          <Route exact path="/">
+            <PhotoList />
           </Route>
-          <Route path="/photo/:id">
+          <Route exact path="/photo/:id">
             <PhotoDetail />
           </Route>
-          <Route path="/photo">
-            <PhotoList />
+          <Route exact path="/create">
+            <PhotoCreate />
           </Route>
         </Switch>
       </div>
